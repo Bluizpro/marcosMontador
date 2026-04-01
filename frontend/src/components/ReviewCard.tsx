@@ -34,6 +34,20 @@ export default function ReviewCard({ review }: { review: Review }) {
           <span className="text-xs text-gray-400 uppercase tracking-widest">{review.source} review</span>
         </div>
       </div>
+      
+      {review.reply_text && (
+        <div className="mt-8 pt-6 border-t border-gray-50">
+          <div className="flex items-start gap-3">
+            <div className="mt-1 w-2 h-2 rounded-full bg-accent shrink-0" />
+            <div>
+              <p className="text-[10px] text-accent uppercase tracking-widest font-bold mb-2">Resposta de Marcos Montador</p>
+              <p className="text-sm text-gray-600 leading-relaxed italic">
+                "{review.reply_text}"
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

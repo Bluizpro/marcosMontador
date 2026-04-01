@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import ReviewCard from '@/components/ReviewCard';
+import ReviewsSection from '@/components/ReviewsSection';
 import { getReviews } from '@/services/reviews';
 
 export default async function Home() {
@@ -32,7 +32,7 @@ export default async function Home() {
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="aspect-square relative overflow-hidden group">
                 <img 
-                  src={`https://images.unsplash.com/photo-${1555000000000 + i}?w=400&h=400&fit=crop`} 
+                  src={"https://images.unsplash.com/photo-" + (1555000000000 + i) + "?w=400&h=400&fit=crop"} 
                   alt="Trabalho Marcos Montador"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -45,7 +45,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* About Section (Fix for UX Audit) */}
+      {/* About Section */}
       <section id="sobre" className="py-24 bg-white border-b border-gray-100">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="relative h-[500px]">
@@ -68,25 +68,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section id="depoimentos" className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black font-heading text-primary uppercase tracking-tighter">
-              O que dizem <span className="text-accent">nossos clientes.</span>
-            </h2>
-            <p className="text-gray-500 font-body text-lg max-w-2xl mx-auto">
-              Confira a opinião de quem já utilizou nossos serviços via Google Maps e avaliações diretas.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {reviews.slice(0, 3).map((review) => (
-              <ReviewCard key={review.id} review={review} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <ReviewsSection initialReviews={reviews} />
 
       {/* Footer / Contact Preview */}
       <footer id="contato" className="bg-primary pt-24 pb-12 text-white">
