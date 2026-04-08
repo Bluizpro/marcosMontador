@@ -1,4 +1,8 @@
 #!/bin/bash
-echo "Iniciando servidor para Marcos Montador..."
-echo "Acesse: http://localhost:8000"
-python3 -m http.server 8000
+echo "Acesse: http://localhost:3000"
+
+# Instalar dependências se necessário e iniciar backend
+(cd backend && npm install && npm start) &
+
+# Iniciar frontend
+(cd frontend && npm run dev)

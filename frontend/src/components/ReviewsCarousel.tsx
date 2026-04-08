@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Review } from '@/services/reviews';
 import ReviewCard from './ReviewCard';
-import { ChevronLeft, ChevronRight, MessageSquarePlus } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageSquarePlus, MapPin } from 'lucide-react';
 
 interface ReviewsCarouselProps {
   reviews: Review[];
@@ -79,15 +79,25 @@ export default function ReviewsCarousel({ reviews, onAddReview }: ReviewsCarouse
         </>
       )}
 
-      {/* Action Button */}
-      <div className="mt-16 text-center">
+      {/* Action Buttons */}
+      <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
         <button 
           onClick={onAddReview}
           className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-sm hover:bg-primary/90 transition-all shadow-lg active:scale-95"
         >
           <MessageSquarePlus size={20} className="text-accent" />
-          DEIXAR MEU DEPOIMENTO
+          DEIXAR SEU DEPOIMENTO
         </button>
+
+        <a 
+          href="https://share.google/TyAXtlHfHk96VGfvV"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-primary text-primary font-bold rounded-sm hover:bg-gray-50 transition-all shadow-lg active:scale-95 group"
+        >
+          <MapPin size={22} className="text-[#4285F4] group-hover:scale-110 transition-transform" />
+          VER AVALIAÇÕES NO GOOGLE
+        </a>
       </div>
 
       {/* Pagination Indicators */}

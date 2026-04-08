@@ -5,10 +5,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #1a1210;
+  --accent: #c5a059;
+  --accent-yellow: #e2c08d;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Source Sans 3', ui-sans-serif, system-ui;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 4s infinite ease-in-out;
 }

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Marcos Montador - Móveis Planejados",
-  description: "Montagem profissional de móveis planejados com qualidade e elegância.",
+  title: "Marcos Montador",
+  description: "Montagem profissional de móveis com qualidade e elegância.",
 };
 
 export default function RootLayout({

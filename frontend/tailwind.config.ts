@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#1a3a52",
-        secondary: "#2c5282",
-        accent: "#d4a574",
-        "accent-yellow": "#f4c430",
+        primary: "var(--primary)",
+        secondary: "var(--secondary, #2a1e1b)",
+        accent: "var(--accent)",
+        "accent-yellow": "var(--accent-yellow)",
       },
       fontFamily: {
         heading: ["var(--font-lexend)", "sans-serif"],

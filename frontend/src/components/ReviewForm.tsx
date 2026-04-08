@@ -44,10 +44,10 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-lg bg-white p-8 md:p-12 shadow-2xl animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-lg bg-white p-8 md:p-12 shadow-2xl animate-in fade-in zoom-in duration-300 rounded-3xl">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors"
+          className="absolute top-6 right-6 text-gray-400 hover:text-primary transition-colors"
         >
           <X size={24} />
         </button>
@@ -87,7 +87,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-4 bg-gray-50 border-b-2 border-gray-100 focus:border-accent outline-none transition-colors font-body"
+              className="w-full p-4 bg-gray-50 border-2 border-gray-100 focus:border-accent outline-none transition-colors font-body rounded-xl"
               placeholder="Ex: João da Silva"
             />
           </div>
@@ -99,7 +99,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
               rows={4}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              className="w-full p-4 bg-gray-50 border-b-2 border-gray-100 focus:border-accent outline-none transition-colors font-body resize-none"
+              className="w-full p-4 bg-gray-50 border-2 border-gray-100 focus:border-accent outline-none transition-colors font-body resize-none rounded-xl"
               placeholder="Conte como foi sua experiência..."
             />
           </div>
@@ -109,7 +109,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-5 bg-accent text-primary font-black text-xl hover:bg-accent-yellow transition-all shadow-lg disabled:opacity-50 active:scale-95"
+            className="w-full py-5 bg-accent text-primary font-black text-xl hover:opacity-90 transition-all shadow-lg disabled:opacity-50 active:scale-95 rounded-full"
           >
             {loading ? 'ENVIANDO...' : 'PUBLICAR DEPOIMENTO'}
           </button>
