@@ -1,16 +1,19 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative h-screen flex items-center overflow-hidden pt-20"
-      style={{
-        backgroundImage: 'url("marcosmontador.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-    >
+    <section id="home" className="relative h-screen flex items-center overflow-hidden">
+      {/* Optimized Background Image */}
+      <Image
+        src="/marcosmontador.jpg"
+        alt="Marcos Montador Background"
+        fill
+        priority
+        className="object-cover"
+        sizes="100vw"
+        quality={85}
+      />
       {/* Dark Overlay for Readability */}
       <div className="absolute inset-0 bg-[var(--primary)] opacity-80 z-0" />
 

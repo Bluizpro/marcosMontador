@@ -61,29 +61,29 @@ export default function ReviewsCarousel({ reviews, onAddReview }: ReviewsCarouse
 
       {/* Navigation Buttons */}
       {totalPages > 1 && (
-        <>
+        <div className="flex md:block">
           <button 
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 bg-white border border-gray-100 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-accent hover:text-white transition-all z-10 opacity-0 group-hover:opacity-100"
+            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-gray-100 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-accent hover:text-white transition-all z-10 md:opacity-0 md:group-hover:opacity-100"
             aria-label="Anterior"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} />
           </button>
           <button 
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 bg-white border border-gray-100 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-accent hover:text-white transition-all z-10 opacity-0 group-hover:opacity-100"
+            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white border border-gray-100 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-accent hover:text-white transition-all z-10 md:opacity-0 md:group-hover:opacity-100"
             aria-label="Próximo"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} />
           </button>
-        </>
+        </div>
       )}
 
       {/* Action Buttons */}
-      <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 font-body">
         <button 
           onClick={onAddReview}
-          className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-sm hover:bg-primary/90 transition-all shadow-lg active:scale-95"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-sm hover:bg-primary/90 transition-all shadow-lg active:scale-95 text-sm md:text-base"
         >
           <MessageSquarePlus size={20} className="text-accent" />
           DEIXAR SEU DEPOIMENTO
@@ -93,10 +93,10 @@ export default function ReviewsCarousel({ reviews, onAddReview }: ReviewsCarouse
           href="https://share.google/TyAXtlHfHk96VGfvV"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-primary text-primary font-bold rounded-sm hover:bg-gray-50 transition-all shadow-lg active:scale-95 group"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-primary text-primary font-bold rounded-sm hover:bg-gray-50 transition-all shadow-lg active:scale-95 group text-sm md:text-base"
         >
           <MapPin size={22} className="text-[#4285F4] group-hover:scale-110 transition-transform" />
-          VER AVALIAÇÕES NO GOOGLE
+          VER NO GOOGLE
         </a>
       </div>
 

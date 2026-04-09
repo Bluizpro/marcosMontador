@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
+import { Lexend, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  variable: "--font-lexend",
+  weight: ["100", "300", "400", "700", "900"],
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
+  weight: ["200", "300", "400", "600", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Marcos Montador",
@@ -12,12 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="pt-BR" className={`scroll-smooth ${lexend.variable} ${sourceSans.variable}`}>
       <body className="antialiased font-body">
         {children}
       </body>

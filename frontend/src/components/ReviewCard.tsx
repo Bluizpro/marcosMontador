@@ -1,9 +1,10 @@
 import { Review } from '@/services/reviews';
 import { Star } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="bg-white p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+    <div className="bg-white p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
       <div className="flex gap-1 mb-4 text-accent">
         {[...Array(5)].map((_, i) => (
           <Star 
@@ -14,24 +15,28 @@ export default function ReviewCard({ review }: { review: Review }) {
           />
         ))}
       </div>
-      <p className="text-gray-600 italic mb-6 font-body leading-relaxed">
+      <p className="text-gray-600 italic mb-6 font-body leading-relaxed flex-grow">
         "{review.text}"
       </p>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-auto">
         {review.profile_photo_url ? (
-          <img 
-            src={review.profile_photo_url} 
-            alt={review.author_name} 
-            className="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-          />
+          <div className="relative w-12 h-12 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+            <Image 
+              src={review.profile_photo_url} 
+              alt={review.author_name} 
+              fill
+              className="object-cover"
+              sizes="48px"
+            />
+          </div>
         ) : (
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
             {review.author_name.charAt(0)}
           </div>
         )}
         <div>
-          <h4 className="font-bold text-primary font-heading">{review.author_name}</h4>
-          <span className="text-xs text-gray-400 uppercase tracking-widest">{review.source} review</span>
+          <h4 className="font-bold text-primary font-heading text-sm md:text-base">{review.author_name}</h4>
+          <span className="text-[10px] text-gray-400 uppercase tracking-widest">{review.source} review</span>
         </div>
       </div>
       

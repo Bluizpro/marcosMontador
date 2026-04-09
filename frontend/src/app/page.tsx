@@ -6,10 +6,10 @@ import ContactForm from '@/components/ContactForm';
 import CategoryGallery from '@/components/CategoryGallery';
 import { Instagram, Facebook } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Image from 'next/image';
 
 export default async function Home() {
   const reviews = await getReviews();
-
 
   return (
     <main className="min-h-screen bg-white">
@@ -17,14 +17,14 @@ export default async function Home() {
       <Hero />
 
       {/* Gallery Section */}
-      <section id="galeria" className="py-24 bg-gray-50">
+      <section id="galeria" className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 md:mb-16">
             <div className="max-w-2xl space-y-4">
-              <h2 className="text-4xl md:text-5xl font-black font-heading text-primary uppercase tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-black font-heading text-primary uppercase tracking-tighter">
                 Nossos <span className="text-accent underline decoration-4 underline-offset-8">Trabalhos.</span>
               </h2>
-              <p className="text-gray-500 font-body text-lg max-w-prose">
+              <p className="text-gray-500 font-body text-base md:text-lg max-w-prose">
                 Excelência técnica em cada detalhe. Veja nossos trabalhos divididos por ambientes.
               </p>
             </div>
@@ -35,22 +35,27 @@ export default async function Home() {
       </section>
 
       {/* About Section */}
-      <section id="sobre" className="py-24 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[500px]">
-            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=800&fit=crop" alt="Equipe Marcos Montador" className="w-full h-full object-cover rounded-2xl shadow-xl hover:scale-[1.02] transition-transform duration-500" />
-            <div className="absolute -bottom-6 -right-6 bg-accent p-8 text-primary font-black text-3xl shadow-lg hidden lg:block">
-              20+ ANOS <br /> DE EXPERIÊNCIA
+      <section id="sobre" className="py-16 md:py-24 bg-white border-b border-gray-100 font-body">
+        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="relative h-[350px] md:h-[500px]">
+            <Image 
+              src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" 
+              alt="Equipe Marcos Montador" 
+              fill
+              className="object-cover rounded-2xl shadow-xl hover:scale-[1.01] transition-transform duration-500" 
+            />
+            <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-accent p-6 md:p-8 text-primary font-black text-xl md:text-3xl shadow-lg">
+              20+ ANOS <br className="hidden md:block" /> DE EXPERIÊNCIA
             </div>
           </div>
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-black font-heading text-primary uppercase tracking-tighter">
+          <div className="space-y-6 pt-8 md:pt-0">
+            <h2 className="text-3xl md:text-5xl font-black font-heading text-primary uppercase tracking-tighter">
               Tradição e <span className="text-accent underline decoration-4 underline-offset-8">Qualidade.</span>
             </h2>
-            <p className="text-gray-600 font-body text-xl leading-relaxed max-w-prose">
+            <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-prose">
               Com décadas de atuação no mercado, Marcos Montador consolidou sua trajetória com um propósito claro: oferecer a montagem de móveis mais precisa e confiável do mercado.
             </p>
-            <p className="text-gray-500 font-body text-lg leading-relaxed max-w-prose">
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-prose">
               Não apenas montamos móveis; realizamos sonhos de ambientes funcionais e elegantes. Cada parafuso e cada ajuste é feito com o cuidado de quem entende que o seu lar é o seu bem mais precioso.
             </p>
           </div>
