@@ -26,7 +26,7 @@ export async function getInternalReviews(): Promise<Review[]> {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching internal reviews:', error);
+    console.warn('Error fetching internal reviews:', error.message || error);
     return [];
   }
   return data || [];

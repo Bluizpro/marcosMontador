@@ -76,7 +76,7 @@ export default async function Home() {
               <div className="space-y-4 text-lg">
                 <p className="flex items-center gap-4">
                   <span className="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full">📞</span>
-                  (11) 99999-9999
+                  (21) 97928-8721
                 </p>
                 <p className="flex items-center gap-4">
                   <span className="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full">✉️</span>
