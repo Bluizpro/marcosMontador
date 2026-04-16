@@ -31,7 +31,7 @@ const categories = [
       "/galeria/salas/sala.png", "/galeria/salas/sala1.png", "/galeria/salas/sala10.png", "/galeria/salas/sala11.png",
       "/galeria/salas/sala111.png", "/galeria/salas/sala113.png", "/galeria/salas/sala117.jpeg",
       "/galeria/salas/sala12.png",
-      "/galeria/salas/sala123.jpeg", 
+      "/galeria/salas/sala123.jpeg",
       "/galeria/salas/sala14.png",
       "/galeria/salas/sala142.jpeg", "/galeria/salas/sala143.jpeg", "/galeria/salas/sala2.png",
       "/galeria/salas/sala22.png", "/galeria/salas/sala3.jpeg", "/galeria/salas/sala5.jpeg", "/galeria/salas/sala6.jpeg",
@@ -47,7 +47,7 @@ const categories = [
       "/galeria/cozinhas/cozinha333.webp", "/galeria/cozinhas/cozinha342.webp", "/galeria/cozinhas/cozinha.jpg",
       "/galeria/cozinhas/cozinha.jpeg", "/galeria/cozinhas/cozinha1.jpeg", "/galeria/cozinhas/cozinha2.jpeg", "/galeria/cozinhas/cozinha21.png",
       "/galeria/cozinhas/cozinha3.jpeg", "/galeria/cozinhas/cozinha33.png", "/galeria/cozinhas/cozinha4.png",
-      "/galeria/cozinhas/cozinha5.png",
+      "/galeria/cozinhas/cozinha5.png", "/galeria/cozinhas/marcoscozinha.webp", "/galeria/cozinhas/marcosmontador.webp",
       "/galeria/cozinhas/cozinha57.jpeg"
     ]
   },
@@ -145,8 +145,8 @@ export default function CategoryGallery() {
             <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 {allImages.map((img, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     onClick={() => setExpandedImage(img.url)}
                     className="aspect-square relative rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-all cursor-zoom-in"
                   >
@@ -210,8 +210,8 @@ export default function CategoryGallery() {
             <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 {selectedCategory.images.map((img, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     onClick={() => setExpandedImage(img)}
                     className="aspect-square relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-zoom-in group"
                   >
@@ -247,7 +247,7 @@ export default function CategoryGallery() {
 
       {/* Lightbox - Expanded Image */}
       {expandedImage && (
-        <div 
+        <div
           className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 animate-in fade-in duration-300"
           onClick={() => setExpandedImage(null)}
         >
@@ -257,7 +257,7 @@ export default function CategoryGallery() {
           >
             <X size={40} />
           </button>
-          
+
           <div className="relative w-full h-full max-w-5xl max-h-[80vh] flex items-center justify-center">
             <Image
               src={expandedImage}
