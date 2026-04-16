@@ -8,11 +8,57 @@ import { Instagram, Facebook } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Image from 'next/image';
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Marcos Montador',
+  description: 'Montagem profissional de móveis com mais de 20 anos de experiência no Rio de Janeiro.',
+  url: 'https://marcosmontador.com.br',
+  telephone: '+55-21-97928-8721',
+  email: 'marcosadriano0102@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Rio de Janeiro',
+    addressRegion: 'RJ',
+    addressCountry: 'BR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -22.9068,
+    longitude: -43.1729,
+  },
+  sameAs: [
+    'https://www.instagram.com/marcos_montador_rj/',
+    'https://www.facebook.com/MarcosMontador/',
+  ],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  priceRange: '$$',
+  image: 'https://marcosmontador.com.br/marcosmontador.jpg',
+  serviceArea: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: -22.9068,
+      longitude: -43.1729,
+    },
+    geoRadius: '50000',
+  },
+};
+
 export default async function Home() {
   const reviews = await getReviews();
 
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <Header />
       <Hero />
 

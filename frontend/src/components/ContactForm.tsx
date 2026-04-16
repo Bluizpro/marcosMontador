@@ -17,7 +17,7 @@ export default function ContactForm() {
     
     const { nome, telefone, mensagem } = formData;
     const finalMensagem = mensagem.trim() || 'Olá, gostaria de fazer um orçamento';
-    const apiUrl = 'http://localhost:3001/api/contact';
+    const apiUrl = '/api/contact';
     
     try {
       const response = await fetch(apiUrl, {
