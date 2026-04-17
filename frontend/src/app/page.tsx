@@ -8,6 +8,8 @@ import { Instagram, Facebook } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Image from 'next/image';
 
+export const revalidate = 60; // Revalidate every 60 seconds
+
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',

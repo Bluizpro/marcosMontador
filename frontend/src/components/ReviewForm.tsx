@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Star, X } from 'lucide-react';
-import { submitReview } from '@/services/reviews';
+import { submitReviewAction } from '@/app/actions';
 
 interface ReviewFormProps {
   onClose: () => void;
@@ -23,11 +23,16 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
     setError('');
 
     try {
-      await submitReview({
+      const result = await submitReviewAction({
         author_name: name,
         rating,
         text: comment
       });
+
+      if (!result.success) {
+        throw new Error(result.error);
+      }
+      
       onSuccess();
     } catch (err: any) {
       console.error('Submit error:', err);
