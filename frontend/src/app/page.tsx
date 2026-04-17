@@ -87,7 +87,7 @@ export default async function Home() {
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="relative h-[350px] md:h-[500px]">
             <Image 
-              src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" 
+              src="/mesa2.jpeg" 
               alt="Equipe Marcos Montador" 
               fill
               className="object-cover rounded-2xl shadow-xl hover:scale-[1.01] transition-transform duration-500" 

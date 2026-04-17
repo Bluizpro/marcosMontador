@@ -1,5 +1,6 @@
-## [1.0.1] - 2026-04-16
+## [1.0.1] - 2026-04-16 - 2026-04-17
 ### Adicionado
+- Galeria de fotos com categorias
 - Implementação completa de SEO (OpenGraph, Twitter Cards, Canonical Tags).
 - Geração automática de `sitemap.xml` e `robots.txt`.
 - Schema.org (JSON-LD) para LocalBusiness (SEO Local).
