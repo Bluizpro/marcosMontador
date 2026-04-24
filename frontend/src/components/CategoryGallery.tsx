@@ -17,7 +17,7 @@ const categories = [
       "/galeria/quartos/quarto4.jpeg", "/galeria/quartos/quarto135.jpeg",
 
       "/galeria/quartos/quarto48.jpeg", "/galeria/quartos/quarto5.jpeg",
-      "/galeria/quartos/quarto50.jpeg",
+
 
       "/galeria/quartos/quarto6.jpeg", "/galeria/quartos/quarto7.jpeg", "/galeria/quartos/quarto8.png", "/galeria/quartos/quarto9.jpeg"
     ]
@@ -31,7 +31,7 @@ const categories = [
       "/galeria/salas/sala.png", "/galeria/salas/sala1.png", "/galeria/salas/sala10.png", "/galeria/salas/sala11.png",
       "/galeria/salas/sala111.png", "/galeria/salas/sala113.png", "/galeria/salas/sala117.jpeg",
       "/galeria/salas/sala12.png",
-      "/galeria/salas/sala123.jpeg",
+      "/galeria/salas/sala123.jpeg", "/galeria/salas/sala88.jpeg",
       "/galeria/salas/sala14.png",
       "/galeria/salas/sala142.jpeg", "/galeria/salas/sala143.jpeg", "/galeria/salas/sala2.png",
       "/galeria/salas/sala22.png", "/galeria/salas/sala3.jpeg", "/galeria/salas/sala5.jpeg", "/galeria/salas/sala6.jpeg",
@@ -48,7 +48,7 @@ const categories = [
       "/galeria/cozinhas/cozinha.jpeg", "/galeria/cozinhas/cozinha1.jpeg", "/galeria/cozinhas/cozinha2.jpeg", "/galeria/cozinhas/cozinha21.png",
       "/galeria/cozinhas/cozinha3.jpeg", "/galeria/cozinhas/cozinha33.png", "/galeria/cozinhas/cozinha4.png",
       "/galeria/cozinhas/cozinha5.png", "/galeria/cozinhas/marcoscozinha.webp", "/galeria/cozinhas/marcosmontador.webp",
-      "/galeria/cozinhas/cozinha57.jpeg"
+      "/galeria/cozinhas/cozinha57.jpeg", "/galeria/cozinhas/cozinha77.jpeg", "/galeria/cozinhas/cozinha99.jpeg"
     ]
   },
   {
