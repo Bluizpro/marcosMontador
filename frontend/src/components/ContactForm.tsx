@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -34,6 +35,8 @@ export default function ContactForm() {
       });
 
       if (!response.ok) throw new Error('Falha ao enviar');
+
+      sendGAEvent({ event: 'generate_lead', value: 'contact_form' });
 
       setStatus('success');
       setFormData({ nome: '', telefone: '', mensagem: '' });

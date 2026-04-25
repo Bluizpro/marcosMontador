@@ -40,11 +40,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ""}`, // unsafe-inline needed for JSON-LD, unsafe-eval for Next.js dev
+              `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ""}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: https://images.unsplash.com https://*.googleusercontent.com",
-              "connect-src 'self' https://*.supabase.co https://maps.googleapis.com",
+              "img-src 'self' data: https://images.unsplash.com https://*.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "connect-src 'self' https://*.supabase.co https://maps.googleapis.com https://www.google-analytics.com",
               "frame-ancestors 'none'",
             ].join('; '),
           },

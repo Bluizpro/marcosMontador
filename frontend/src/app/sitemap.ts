@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = 'https://marcosmontador.com.br';
+  const siteUrl = 'https://marcosmontador.online';
 
   return [
     {

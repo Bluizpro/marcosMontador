@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -58,7 +59,7 @@ const categories = [
     description: 'Home offices, mesas e mesas de bilhar/sinuca com acabamento impecável.',
     images: [
       "/galeria/escritorios/escritorio344.webp", "/galeria/escritorios/escritorio222.webp", "/galeria/escritorios/escritorio.webp",
-      "/galeria/escritorios/fundação oswaldo cruz.webp", "/galeria/escritorios/marcos montador.webp", "/galeria/escritorios/marcos.webp",
+      "/galeria/escritorios/fundacao_oswaldo_cruz.webp", "/galeria/escritorios/marcos_montador_gallery.webp", "/galeria/escritorios/marcos.webp",
       "/galeria/escritorios/escritorio.jpeg",
       "/galeria/escritorios/escritorio14.jpeg",
       "/galeria/escritorios/escritorio16.jpeg", "/galeria/escritorios/escritorio17.jpeg",
@@ -96,7 +97,10 @@ export default function CategoryGallery() {
         {categories.map((cat) => (
           <div
             key={cat.id}
-            onClick={() => setSelectedCategory(cat)}
+            onClick={() => {
+              setSelectedCategory(cat);
+              sendGAEvent({ event: 'view_category', value: cat.id });
+            }}
             className="aspect-[4/5] relative overflow-hidden group rounded-2xl shadow-lg cursor-pointer"
           >
             <Image

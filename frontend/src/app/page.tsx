@@ -86,11 +86,11 @@ export default async function Home() {
       <section id="sobre" className="py-16 md:py-24 bg-white border-b border-gray-100 font-body">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="relative h-[350px] md:h-[500px]">
-            <Image 
-              src="/mesa2.jpeg" 
-              alt="Equipe Marcos Montador" 
+            <Image
+              src="/mesa2.jpeg"
+              alt="Equipe Marcos Montador"
               fill
-              className="object-cover rounded-2xl shadow-xl hover:scale-[1.01] transition-transform duration-500" 
+              className="object-cover rounded-2xl shadow-xl hover:scale-[1.01] transition-transform duration-500"
             />
             <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-accent p-6 md:p-8 text-primary font-black text-xl md:text-3xl shadow-lg">
               20+ ANOS <br className="hidden md:block" /> DE EXPERIÊNCIA
@@ -163,9 +163,11 @@ export default async function Home() {
             <ContactForm />
           </div>
 
-          <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm tracking-widest uppercase">
-            <p>© 2026 MARCOS MONTADOR. TODOS OS DIREITOS RESERVADOS.</p>
-
+          <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-[10px] md:text-sm tracking-widest uppercase text-center md:text-left">
+            <div className="space-y-2">
+              <p>© 2026 MARCOS MONTADOR. TODOS OS DIREITOS RESERVADOS.</p>
+              <p>MARCOS MONTADOR | CNPJ: 66.369.967/0001-53</p>
+            </div>
           </div>
 
         </div>

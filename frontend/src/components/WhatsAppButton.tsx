@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageCircle } from 'lucide-react';
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function WhatsAppButton() {
   return (
@@ -8,6 +8,7 @@ export default function WhatsAppButton() {
       href="https://wa.me/5521979288721"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => sendGAEvent({ event: 'whatsapp_click', value: 'floating_button' })}
       className="fixed bottom-8 right-8 z-[100] group animate-bounce-subtle"
       aria-label="Contato via WhatsApp"
     >

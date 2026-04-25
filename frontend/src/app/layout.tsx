@@ -1,4 +1,4 @@
-import Script from "next/script";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { Lexend, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
@@ -15,7 +15,7 @@ const sourceSans = Source_Sans_3({
   weight: ["200", "300", "400", "600", "700", "900"],
 });
 
-const siteUrl = "https://marcosmontador.com.br";
+const siteUrl = "https://marcosmontador.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -89,21 +89,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`scroll-smooth ${lexend.variable} ${sourceSans.variable}`}>
       <body className="antialiased font-body">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QTHB7WL2RD"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-QTHB7WL2RD');
-          `}
-        </Script>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-QTHB7WL2RD" />
 
     </html>
   );
