@@ -32,3 +32,24 @@ body {
 .animate-bounce-subtle {
   animation: bounce-subtle 4s infinite ease-in-out;
 }
+
+@layer utilities {
+  .modern-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .modern-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .modern-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  .modern-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+  .modern-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+}

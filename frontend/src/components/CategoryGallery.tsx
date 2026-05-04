@@ -14,13 +14,14 @@ const categories = [
     images: [
       "/galeria/quartos/quarto.png", "/galeria/quartos/quarto2.jpeg", "/galeria/quartos/quarto22.jpeg",
       "/galeria/quartos/quarto3.jpeg", "/galeria/quartos/quarto32.jpeg", "/galeria/quartos/quarto34.jpeg",
-      "/galeria/quartos/quarto37.jpeg", "/galeria/quartos/quarto38.jpeg",
+
       "/galeria/quartos/quarto4.jpeg", "/galeria/quartos/quarto135.jpeg",
 
-      "/galeria/quartos/quarto48.jpeg", "/galeria/quartos/quarto5.jpeg",
+      "/galeria/quartos/quarto5.jpeg",
 
 
-      "/galeria/quartos/quarto6.jpeg", "/galeria/quartos/quarto7.jpeg", "/galeria/quartos/quarto8.png", "/galeria/quartos/quarto9.jpeg"
+      "/galeria/quartos/quarto6.jpeg", "/galeria/quartos/quarto7.jpeg", "/galeria/quartos/quarto8.png", "/galeria/quartos/quarto9.jpeg",
+      "/galeria/quartos/marcos_quarto.jpeg", "/galeria/quartos/quarto66.jpeg", "/galeria/quartos/quarto67.jpeg", "/galeria/quartos/quartomarcos.jpeg"
     ]
   },
   {
@@ -36,7 +37,7 @@ const categories = [
       "/galeria/salas/sala14.png",
       "/galeria/salas/sala142.jpeg", "/galeria/salas/sala143.jpeg", "/galeria/salas/sala2.png",
       "/galeria/salas/sala22.png", "/galeria/salas/sala3.jpeg", "/galeria/salas/sala5.jpeg", "/galeria/salas/sala6.jpeg",
-      "/galeria/salas/sala66.png", "/galeria/salas/sala7.png"
+      "/galeria/salas/sala66.png", "/galeria/salas/sala7.png", "/galeria/salas/marcos_sala.jpeg"
     ]
   },
   {
@@ -45,30 +46,44 @@ const categories = [
     cover: '/galeria/cozinhas/cozinha3.jpeg',
     description: 'Montagem completa de armários de cozinha, tampos, gabinetes e ferragens em geral.',
     images: [
-      "/galeria/cozinhas/cozinha333.webp", "/galeria/cozinhas/cozinha342.webp", "/galeria/cozinhas/cozinha.jpg",
+      "/galeria/cozinhas/marcos_cozinhaVerde2.jpeg", "/galeria/cozinhas/marcos_cozinha.jpeg",
+      "/galeria/cozinhas/cozinha342.webp", "/galeria/cozinhas/cozinha.jpg",
       "/galeria/cozinhas/cozinha.jpeg", "/galeria/cozinhas/cozinha1.jpeg", "/galeria/cozinhas/cozinha2.jpeg", "/galeria/cozinhas/cozinha21.png",
       "/galeria/cozinhas/cozinha3.jpeg", "/galeria/cozinhas/cozinha33.png", "/galeria/cozinhas/cozinha4.png",
       "/galeria/cozinhas/cozinha5.png", "/galeria/cozinhas/marcoscozinha.webp", "/galeria/cozinhas/marcosmontador.webp",
-      "/galeria/cozinhas/cozinha57.jpeg", "/galeria/cozinhas/cozinha77.jpeg", "/galeria/cozinhas/cozinha99.jpeg"
+      "/galeria/cozinhas/cozinha99.jpeg"
     ]
   },
   {
     id: 'escritórios',
     name: 'ESCRITÓRIOS',
-    cover: '/galeria/escritorios/escritorio.jpeg',
-    description: 'Home offices, mesas e mesas de bilhar/sinuca com acabamento impecável.',
+    cover: '/galeria/escritorios/marcos_montador_gallery.webp',
+    description: 'Home offices, mesas e estantes com acabamento impecável.',
     images: [
-      "/galeria/escritorios/escritorio344.webp", "/galeria/escritorios/escritorio222.webp", "/galeria/escritorios/escritorio.webp",
-      "/galeria/escritorios/fundacao_oswaldo_cruz.webp", "/galeria/escritorios/marcos_montador_gallery.webp", "/galeria/escritorios/marcos.webp",
-      "/galeria/escritorios/escritorio.jpeg",
-      "/galeria/escritorios/escritorio14.jpeg",
-      "/galeria/escritorios/escritorio16.jpeg", "/galeria/escritorios/escritorio17.jpeg",
-      "/galeria/escritorios/escritorio2.jpeg", "/galeria/escritorios/escritorio20.jpeg",
+      "/galeria/escritorios/fundacao_oswaldo_cruz.webp",
+      "/galeria/escritorios/marcos_montador_gallery.webp",
+      "/galeria/escritorios/escritorio_marcoos.webp",
+      "/galeria/escritorios/escritorio_marcos3.jpeg",
+      "/galeria/escritorios/marcos_escritorioo.webp",
+      "/galeria/escritorios/marcos_escritorio3.jpeg",
+      "/galeria/escritorios/escritorio_marcos.png",
+      "/galeria/escritorios/escritorio.webp",
+      "/galeria/escritorios/escritorio_marcosM.jpeg",
+      "/galeria/escritorios/escritorio88.jpeg",
 
-      "/galeria/escritorios/escritorio28.jpeg", "/galeria/escritorios/escritorio3.jpeg",
-      "/galeria/escritorios/escritorio32.jpeg", "/galeria/escritorios/escritorio4.jpeg",
-      "/galeria/escritorios/escritorio8.jpeg",
-      "/galeria/escritorios/escritorio9.jpeg",
+
+    ]
+  },
+  {
+    id: 'lazer',
+    name: 'LAZER',
+    cover: '/galeria/lazer/lazer.jpeg',
+    description: 'Montagem de mesas de bilhar, sinuca e móveis para áreas de entretenimento.',
+    images: [
+      "/galeria/lazer/lazer.jpeg", "/galeria/lazer/lazer1.jpeg", "/galeria/lazer/lazer2.jpeg", "/galeria/lazer/lazer4.jpeg",
+      "/galeria/lazer/lazer6.jpeg", "/galeria/lazer/lazer7.jpeg", "/galeria/lazer/lazer8.jpeg", "/galeria/lazer/lazer9.jpeg",
+      "/galeria/lazer/lazer12.jpeg", "/galeria/lazer/lazer20.jpeg", "/galeria/lazer/lazer28.jpeg", "/galeria/lazer/lazer32.jpeg",
+      "/galeria/lazer/lazer33.webp"
     ]
   }
 ];
@@ -93,7 +108,7 @@ export default function CategoryGallery() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory modern-scrollbar scroll-smooth">
         {categories.map((cat) => (
           <div
             key={cat.id}
@@ -101,7 +116,7 @@ export default function CategoryGallery() {
               setSelectedCategory(cat);
               sendGAEvent({ event: 'view_category', value: cat.id });
             }}
-            className="aspect-[4/5] relative overflow-hidden group rounded-2xl shadow-lg cursor-pointer"
+            className="min-w-[280px] sm:min-w-[320px] aspect-[4/5] relative overflow-hidden group rounded-2xl shadow-lg cursor-pointer snap-start"
           >
             <Image
               src={cat.cover}
