@@ -1,101 +1,90 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { getGalleryImages } from '@/app/actions';
 
-const categories = [
+const initialCategories = [
   {
     id: 'quartos',
     name: 'QUARTOS',
     cover: '/galeria/quartos/quarto.png',
     description: 'Montagem de camas, guarda-roupas, criados-mudos e armários para dormitórios de todos os estilos.',
-    images: [
-      "/galeria/quartos/quarto.png", "/galeria/quartos/quarto2.jpeg", "/galeria/quartos/quarto22.jpeg",
-      "/galeria/quartos/quarto3.jpeg", "/galeria/quartos/quarto32.jpeg", "/galeria/quartos/quarto34.jpeg",
-
-      "/galeria/quartos/quarto4.jpeg", "/galeria/quartos/quarto135.jpeg",
-
-      "/galeria/quartos/quarto5.jpeg",
-
-
-      "/galeria/quartos/quarto6.jpeg", "/galeria/quartos/quarto7.jpeg", "/galeria/quartos/quarto8.png", "/galeria/quartos/quarto9.jpeg",
-      "/galeria/quartos/marcos_quarto.jpeg", "/galeria/quartos/quarto66.jpeg", "/galeria/quartos/quarto67.jpeg", "/galeria/quartos/quartomarcos.jpeg"
-    ]
+    images: [] as string[]
   },
   {
     id: 'salas',
     name: 'SALAS',
     cover: '/galeria/salas/sala66.png',
     description: 'Instalação de painéis de TV, racks, estantes e sofás para ambientes de estar modernos.',
-    images: [
-      "/galeria/salas/sala.png", "/galeria/salas/sala1.png", "/galeria/salas/sala10.png", "/galeria/salas/sala11.png",
-      "/galeria/salas/sala111.png", "/galeria/salas/sala113.png", "/galeria/salas/sala117.jpeg",
-      "/galeria/salas/sala12.png",
-      "/galeria/salas/sala123.jpeg", "/galeria/salas/sala88.jpeg",
-      "/galeria/salas/sala14.png",
-      "/galeria/salas/sala142.jpeg", "/galeria/salas/sala143.jpeg", "/galeria/salas/sala2.png",
-      "/galeria/salas/sala22.png", "/galeria/salas/sala3.jpeg", "/galeria/salas/sala5.jpeg", "/galeria/salas/sala6.jpeg",
-      "/galeria/salas/sala66.png", "/galeria/salas/sala7.png", "/galeria/salas/marcos_sala.jpeg"
-    ]
+    images: [] as string[]
   },
   {
     id: 'cozinhas',
     name: 'COZINHAS',
     cover: '/galeria/cozinhas/cozinha3.jpeg',
     description: 'Montagem completa de armários de cozinha, tampos, gabinetes e ferragens em geral.',
-    images: [
-      "/galeria/cozinhas/marcos_cozinhaVerde2.jpeg", "/galeria/cozinhas/marcos_cozinha.jpeg",
-      "/galeria/cozinhas/cozinha342.webp", "/galeria/cozinhas/cozinha.jpg",
-      "/galeria/cozinhas/cozinha.jpeg", "/galeria/cozinhas/cozinha1.jpeg", "/galeria/cozinhas/cozinha2.jpeg", "/galeria/cozinhas/cozinha21.png",
-      "/galeria/cozinhas/cozinha3.jpeg", "/galeria/cozinhas/cozinha33.png", "/galeria/cozinhas/cozinha4.png",
-      "/galeria/cozinhas/cozinha5.png", "/galeria/cozinhas/marcoscozinha.webp", "/galeria/cozinhas/marcosmontador.webp",
-      "/galeria/cozinhas/cozinha99.jpeg"
-    ]
+    images: [] as string[]
   },
   {
     id: 'escritórios',
     name: 'ESCRITÓRIOS',
     cover: '/galeria/escritorios/marcos_montador_gallery.webp',
     description: 'Home offices, mesas e estantes com acabamento impecável.',
-    images: [
-      "/galeria/escritorios/fundacao_oswaldo_cruz.webp",
-      "/galeria/escritorios/marcos_montador_gallery.webp",
-      "/galeria/escritorios/escritorio_marcoos.webp",
-      "/galeria/escritorios/escritorio_marcos3.jpeg",
-      "/galeria/escritorios/marcos_escritorioo.webp",
-      "/galeria/escritorios/marcos_escritorio3.jpeg",
-      "/galeria/escritorios/escritorio_marcos.png",
-      "/galeria/escritorios/escritorio.webp",
-      "/galeria/escritorios/escritorio_marcosM.jpeg",
-      "/galeria/escritorios/escritorio88.jpeg",
-
-
-    ]
+    images: [] as string[]
   },
   {
     id: 'lazer',
     name: 'LAZER',
     cover: '/galeria/lazer/lazer.jpeg',
     description: 'Montagem de mesas de bilhar, sinuca e móveis para áreas de entretenimento.',
-    images: [
-      "/galeria/lazer/lazer.jpeg", "/galeria/lazer/lazer1.jpeg", "/galeria/lazer/lazer2.jpeg", "/galeria/lazer/lazer4.jpeg",
-      "/galeria/lazer/lazer6.jpeg", "/galeria/lazer/lazer7.jpeg", "/galeria/lazer/lazer8.jpeg", "/galeria/lazer/lazer9.jpeg",
-      "/galeria/lazer/lazer12.jpeg", "/galeria/lazer/lazer20.jpeg", "/galeria/lazer/lazer28.jpeg", "/galeria/lazer/lazer32.jpeg",
-      "/galeria/lazer/lazer33.webp"
-    ]
+    images: [] as string[]
   }
 ];
 
-
-
 export default function CategoryGallery() {
-  const [selectedCategory, setSelectedCategory] = useState<typeof categories[0] | null>(null);
+  const [categories, setCategories] = useState(initialCategories);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    async function loadImages() {
+      const { success, data } = await getGalleryImages();
+      if (success && data) {
+        console.log('Imagens carregadas:', data.length);
+        const updated = initialCategories.map(cat => {
+          const catImages = data
+            .filter(img => img.category === cat.id)
+            .map(img => img.url);
+          
+          return {
+            ...cat,
+            cover: catImages[0] || cat.cover, 
+            images: catImages
+          };
+        });
+        setCategories(updated);
+      }
+      setLoading(false);
+    }
+    loadImages();
+  }, []);
+
+  const selectedCategory = categories.find(c => c.id === selectedCategoryId);
   const allImages = categories.flatMap(cat => cat.images.map(img => ({ url: img, category: cat.name })));
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-accent gap-4">
+        <Loader2 className="animate-spin" size={48} />
+        <p className="font-bold tracking-widest text-sm">CARREGANDO GALERIA...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-12">
@@ -113,17 +102,16 @@ export default function CategoryGallery() {
           <div
             key={cat.id}
             onClick={() => {
-              setSelectedCategory(cat);
+              setSelectedCategoryId(cat.id);
               sendGAEvent({ event: 'view_category', value: cat.id });
             }}
             className="min-w-[280px] sm:min-w-[320px] aspect-[4/5] relative overflow-hidden group rounded-2xl shadow-lg cursor-pointer snap-start"
           >
-            <Image
+            <img
               src={cat.cover}
               alt={cat.name}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              onError={(e) => console.error('Erro ao carregar capa:', cat.cover)}
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-6 transition-colors group-hover:bg-black/60">
               <div className="border-2 border-white/40 px-8 py-4 backdrop-blur-sm group-hover:border-accent group-hover:scale-110 transition-all font-heading">
@@ -169,12 +157,11 @@ export default function CategoryGallery() {
                     onClick={() => setExpandedImage(img.url)}
                     className="aspect-square relative rounded-xl overflow-hidden group shadow-sm hover:shadow-lg transition-all cursor-zoom-in"
                   >
-                    <Image
+                    <img
                       src={img.url}
                       alt={`Montagem ${img.category}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => console.error('Erro ao carregar imagem da galeria:', img.url)}
                     />
                     <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 bg-white/90 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[8px] md:text-[10px] font-black text-primary shadow-sm">
                       {img.category}
@@ -203,9 +190,8 @@ export default function CategoryGallery() {
       {/* Modal - Category "Folder" */}
       {selectedCategory && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8 font-body">
-          <div
-            className="absolute inset-0 bg-[var(--primary)] opacity-95 backdrop-blur-md"
-            onClick={() => setSelectedCategory(null)}
+            <div className="absolute inset-0 bg-[var(--primary)] opacity-95 backdrop-blur-md"
+            onClick={() => setSelectedCategoryId(null)}
           />
 
           <div className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[95vh] md:max-h-[90vh] flex flex-col animate-in fade-in zoom-in duration-300">
@@ -218,7 +204,7 @@ export default function CategoryGallery() {
                 <p className="text-xs md:text-base text-gray-500 mt-1 md:mt-2 max-w-xl">{selectedCategory.description}</p>
               </div>
               <button
-                onClick={() => setSelectedCategory(null)}
+                onClick={() => setSelectedCategoryId(null)}
                 className="w-10 h-10 md:w-12 md:h-12 bg-gray-100 flex items-center justify-center rounded-full hover:bg-accent hover:text-white transition-all shadow-md group"
               >
                 <X size={20} className="group-hover:rotate-90 transition-transform" />
@@ -234,12 +220,11 @@ export default function CategoryGallery() {
                     onClick={() => setExpandedImage(img)}
                     className="aspect-square relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-zoom-in group"
                   >
-                    <Image
+                    <img
                       src={img}
                       alt={`${selectedCategory.name} - ${idx}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => console.error('Erro ao carregar imagem da categoria:', img)}
                     />
                   </div>
                 ))}
@@ -253,7 +238,7 @@ export default function CategoryGallery() {
               </p>
               <a
                 href="#contato"
-                onClick={() => setSelectedCategory(null)}
+                onClick={() => setSelectedCategoryId(null)}
                 style={{ backgroundColor: '#c5a059', color: '#14100f' }}
                 className="w-full md:w-auto text-center px-10 py-4 font-black text-lg rounded-full hover:opacity-90 transition-all shadow-lg active:scale-95"
               >
@@ -278,12 +263,10 @@ export default function CategoryGallery() {
           </button>
 
           <div className="relative w-full h-full max-w-5xl max-h-[80vh] flex items-center justify-center">
-            <Image
+            <img
               src={expandedImage}
               alt="Imagem expandida"
-              width={1200}
-              height={800}
-              className="object-contain rounded-lg shadow-2xl animate-in zoom-in duration-300"
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in zoom-in duration-300"
             />
           </div>
         </div>

@@ -28,3 +28,18 @@ export async function submitReviewAction(review: Omit<Review, 'id' | 'created_at
     return { success: false, error: 'Ocorreu um erro ao processar seu depoimento.' };
   }
 }
+
+export async function getGalleryImages() {
+  try {
+    const { data, error } = await supabase
+      .from('gallery_images')
+      .select('category, url')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return { success: true, data: data || [] };
+  } catch (err) {
+    console.error('Error fetching gallery images:', err);
+    return { success: false, data: [] };
+  }
+}

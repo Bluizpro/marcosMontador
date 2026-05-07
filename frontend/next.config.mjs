@@ -11,6 +11,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.googleusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'wvmuumxjwxdfjgvowfpp.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
     ],
   },
 
@@ -43,7 +53,7 @@ const nextConfig = {
               `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com${process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ""}`,
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: https://images.unsplash.com https://*.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "img-src 'self' data: https://images.unsplash.com https://*.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com https://wvmuumxjwxdfjgvowfpp.supabase.co",
               "connect-src 'self' https://*.supabase.co https://maps.googleapis.com https://www.google-analytics.com",
               "frame-ancestors 'none'",
             ].join('; '),
